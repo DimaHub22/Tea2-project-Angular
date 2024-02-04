@@ -1,0 +1,20 @@
+<section>
+  <div class="text-center main">
+    <img src="../../../assets/image/3.png">
+  </div>
+
+  <app-accordion></app-accordion>
+
+  <div class="popup" *ngIf="isClose">
+    <div class="popup-items">
+      <div class="close" (click)="close()">&#x2716;</div>
+      <p>Посмотрите наши чайные коллекции</p>
+      <div class="text-center">
+        <a class="btn btn-primary" [routerLink]="['/catalog']">Смотреть</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

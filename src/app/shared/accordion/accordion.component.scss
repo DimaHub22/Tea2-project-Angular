@@ -1,0 +1,45 @@
+.accordion {
+  width: 856px;
+  margin: 0px auto 0 auto;
+}
+
+.accordion-button {
+  background: linear-gradient(360deg, #076BFF 0%, #007BFF 100%);
+}
+
+.acc-item{
+  margin-bottom: 10px;
+}
+.acc-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(360deg, #076BFF 0%, #007BFF 100%);
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+.arrow{
+  display: block;
+}
+.acc-description{
+  height: 100px;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0px 20px;
+  //transition: all 0.2s;
+}
+
+.acc-description-show {
+  padding: 16px 20px;
+  max-height: 100%;
+  transition: all 0.5s;
+}
+.icon{
+  transform: rotate(180deg);
+  transition: all 0.5s;
+}
+.panel-icon{
+  transition: all 0.5s;
+}

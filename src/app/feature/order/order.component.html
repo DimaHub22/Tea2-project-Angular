@@ -1,0 +1,131 @@
+<div class="container mt-5" *ngIf="success">
+  <form id="form" class="m-auto" [formGroup]="checkoutForm" (ngSubmit)="createOrder()" style="max-width: 636px">
+    <h2 class="text-center mb-5">Сделать заказ</h2>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="firstName" class="form-label">Имя</label>
+        <input type="text" class="form-control" id="firstName"
+               formControlName="name"
+               [class]="{'border-danger': checkoutForm.get('name')?.invalid && (checkoutForm.get('name')?.dirty || checkoutForm.get('name')?.touched)}"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('name')?.invalid && (checkoutForm.get('name')?.dirty || checkoutForm.get('name')?.touched)">
+          <div *ngIf="checkoutForm.get('name')?.errors?.['required']">
+            Введите имя
+          </div>
+          <div *ngIf="checkoutForm.get('name')?.errors?.['pattern']">
+            Вводить только буквы
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="surname" class="form-label">Фамилия</label>
+        <input type="text" class="form-control" id="surname" formControlName="last_name"
+               [class]="{'border-danger': checkoutForm.get('last_name')?.invalid && (checkoutForm.get('last_name')?.dirty || checkoutForm.get('last_name')?.touched)}"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('last_name')?.invalid && (checkoutForm.get('last_name')?.dirty || checkoutForm.get('last_name')?.touched)">
+          <div *ngIf="checkoutForm.get('last_name')?.errors?.['required']">
+            Введите фамилию
+          </div>
+          <div *ngIf="checkoutForm.get('last_name')?.errors?.['pattern']">
+            Вводить только буквы
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="phone" class="form-label">Телефон</label>
+        <input type="text" class="form-control" id="phone" formControlName="phone"
+               [class]="{'border-danger': checkoutForm.get('phone')?.invalid && (checkoutForm.get('phone')?.dirty || checkoutForm.get('phone')?.touched)}"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('phone')?.invalid && (checkoutForm.get('phone')?.dirty || checkoutForm.get('phone')?.touched)">
+          <div *ngIf="checkoutForm.get('phone')?.errors?.['required']">
+            Введите номер телефона
+          </div>
+          <div *ngIf="checkoutForm.get('phone')?.errors?.['pattern']">
+            Введите корректный номер телефона +12345678901
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="country" class="form-label">Страна</label>
+        <input type="text" class="form-control" id="country" formControlName="country"
+               [class]="{'border-danger': checkoutForm.get('country')?.invalid && (checkoutForm.get('country')?.dirty || checkoutForm.get('country')?.touched)}"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('country')?.invalid && (checkoutForm.get('country')?.dirty || checkoutForm.get('country')?.touched)">
+          <div *ngIf="checkoutForm.get('country')?.errors?.['required']">
+            Введите страну
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="index" class="form-label">Индекс</label>
+        <input type="text" class="form-control" id="index" formControlName="zip"
+               [class]="{'border-danger': checkoutForm.get('zip')?.invalid && (checkoutForm.get('zip')?.dirty || checkoutForm.get('zip')?.touched)}"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('zip')?.invalid && (checkoutForm.get('zip')?.dirty || checkoutForm.get('zip')?.touched)">
+          <div *ngIf="checkoutForm.get('zip')?.errors?.['required']">
+            Введите индекс
+          </div>
+          <div *ngIf="checkoutForm.get('zip')?.errors?.['pattern']">
+            Введите 6 чисел
+          </div>
+
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="product" class="form-label">Товар</label>
+        <input type="text" class="form-control" id="product" formControlName="product"
+               [class]="{'border-danger': checkoutForm.get('product')?.invalid}"
+               [readonly]="checkoutForm.get('product')"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('product')?.invalid">
+          <div *ngIf="checkoutForm.get('product')?.errors?.['required']">
+            Выберите товар
+          </div>
+
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="address" class="form-label">Адрес</label>
+        <input type="text" class="form-control" id="address" formControlName="address"
+               [class]="{'border-danger': checkoutForm.get('address')?.invalid && (checkoutForm.get('address')?.dirty || checkoutForm.get('address')?.touched)}"
+        >
+        <div class="text-danger"
+             *ngIf="checkoutForm.get('address')?.invalid && (checkoutForm.get('address')?.dirty || checkoutForm.get('address')?.touched)">
+          <div *ngIf="checkoutForm.get('address')?.errors?.['required']">
+            Введите адрес
+          </div>
+          <div *ngIf="checkoutForm.get('address')?.errors?.['pattern']">
+            Введите: буквы, цифры, пробелы, дефис и слеш
+          </div>
+
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="text" class="form-label">Комментарий к заказу</label>
+        <textarea type="text" class="form-control" id="text" formControlName="comment"></textarea>
+      </div>
+      <div class="col mt-4 d-flex align-items-center">
+        <button type="submit" id="btn" class="btn btn-primary d-block" style="width: 156px" [disabled]="checkoutForm.invalid">Отправить</button>
+        <div class="text-danger pt-1 ms-3" *ngIf="error">
+          Произошла ошибка. Попробуйте еще раз.
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="text-center card p-2 m-auto d-flex justify-content-center align-items-center" style="max-width: 637px;  height: 567px;" *ngIf="!success">
+  <div class="display-5">
+    Спасибо за заказ!
+  </div>
+</div>
