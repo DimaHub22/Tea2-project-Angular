@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductType} from "../../../../type/product.type";
 import {ProductService} from "../../../shared/services/product.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, Routes} from "@angular/router";
 
 
 
@@ -26,10 +26,13 @@ export class CatalogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    let rou = this.router.config.find(item => item.path)
+    const routes: Routes | undefined = this.router.config[0].children
 
-    if (rou) {
-      localStorage.setItem('router', 'true')
+    if (routes) {
+      let rou = routes.find(item => item.path)
+      if (rou) {
+        localStorage.setItem('router', 'true')
+      }
     }
 
     this.getResponse()
