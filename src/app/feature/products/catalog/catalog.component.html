@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h2 class="text-center mb-5">{{title}}</h2>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="m-auto text-center" *ngIf="loading"><img src="../../../../assets/image/ajax-loader.gif" alt=""></div>
+    <div class="m-auto text-center" *ngIf="loading"><img src="assets/image/ajax-loader.gif" alt=""></div>
     <app-product-cart *ngFor="let prod of products " [tea]="prod" ></app-product-cart>
   </div>
 </div>
